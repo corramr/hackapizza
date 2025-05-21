@@ -1,0 +1,30 @@
+[
+    {
+        "question": "Quali sono i piatti che includono le Chocobo Wings come ingrediente?",
+        "refined_query": "",
+        "cypher_query": "MATCH (i:Ingrediente {nome: \"Chocobo Wings\"}),\n(piatto:Piatto)-[:CONTIENE]->(i)\nRETURN DISTINCT piatto.nome",
+        "llm_call_duration_seconds": 5.257821321487427,
+        "answer": [
+            78
+        ],
+        "solution": [
+            78
+        ],
+        "Jaccard similarity": 1.0,
+        "error_log": ""
+    },
+    {
+        "question": "Quali piatti dovrei scegliere per un banchetto a tema magico che includa le celebri Cioccorane?",
+        "refined_query": "",
+        "cypher_query": "MATCH (i:Ingrediente {nome: \"Cioccorane\"}),\n(piatto:Piatto)-[:CONTIENE]->(i),\n(piatto)-[:REALIZZATO_CON_LA_TECNICA]->(t:Tecnica),\n(r:Ristorante)-[:OFFRE_IL_PIATTO]->(piatto),\n(r)-[:GESTITO_DA]->(c:Chef),\n(c)-[:POSSIEDE_LICENZA]->(l:Licenza)\nWHERE l.nome = \"Psionica\" OR l.sigla = \"P\"\nRETURN DISTINCT piatto.nome",
+        "llm_call_duration_seconds": 10.663589477539062,
+        "answer": [
+            225
+        ],
+        "solution": [
+            225
+        ],
+        "Jaccard similarity": 1.0,
+        "error_log": ""
+    }
+]
